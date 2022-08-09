@@ -1,0 +1,54 @@
+entity SecurityUser {
+    firstName String
+    lastName String
+    designation String
+    username String required unique
+    passwordHash String required
+	email String unique
+    description String
+    department String
+    imageUrl String
+    activated Boolean 
+    langKey String
+    activationKey String
+    resetKey String
+    resetDate Instant
+	mobileNo String 
+    createdBy String
+	createdOn Instant
+}
+
+entity SecurityRole {
+	roleName String required unique
+	description String
+    lastModified Instant 
+	lastModifiedBy String 
+}
+
+entity SecurityPermission{
+	permissionName String required unique
+	description String
+    lastModified Instant 
+	lastModifiedBy String 
+}
+
+relationship ManyToMany {
+  SecurityRole{securityPermission(permissionName)} to SecurityPermission{securityRole(roleName)}
+  SecurityUser{securityPermission(permissionName)} to SecurityPermission{securityUser(username)}
+  SecurityUser{securityRole(roleName)} to SecurityRole{securityUser(username)}
+  }
+  
+  
+  // Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceClass
+
+filter *
+// Set an angular suffix
+// angularSuffix * with tvg

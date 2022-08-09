@@ -48,6 +48,15 @@ public class CacheConfiguration {
             createCache(cm, com.vg.userrolepermission.domain.User.class.getName());
             createCache(cm, com.vg.userrolepermission.domain.Authority.class.getName());
             createCache(cm, com.vg.userrolepermission.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.vg.userrolepermission.domain.SecurityUser.class.getName());
+            createCache(cm, com.vg.userrolepermission.domain.SecurityUser.class.getName() + ".securityPermissions");
+            createCache(cm, com.vg.userrolepermission.domain.SecurityUser.class.getName() + ".securityRoles");
+            createCache(cm, com.vg.userrolepermission.domain.SecurityRole.class.getName());
+            createCache(cm, com.vg.userrolepermission.domain.SecurityRole.class.getName() + ".securityPermissions");
+            createCache(cm, com.vg.userrolepermission.domain.SecurityRole.class.getName() + ".securityUsers");
+            createCache(cm, com.vg.userrolepermission.domain.SecurityPermission.class.getName());
+            createCache(cm, com.vg.userrolepermission.domain.SecurityPermission.class.getName() + ".securityRoles");
+            createCache(cm, com.vg.userrolepermission.domain.SecurityPermission.class.getName() + ".securityUsers");
             // jhipster-needle-ehcache-add-entry
         };
     }
